@@ -1,16 +1,3 @@
-" Vim syntax file
-" Language: i3 config file
-" Maintainer: Mohamed Boughaba <mohamed dot bgb at gmail dot com>
-" Version: 0.3
-" Last Change: 2017-10-27 23:59
-
-" References:
-" http://i3wm.org/docs/userguide.html#configuring
-" http://vimdoc.sourceforge.net/htmldoc/syntax.html
-"
-"
-" For version 5.x: Clear all syntax items
-" For version 6.x: Quit when a syntax file was already loaded
 if version < 600
   syn clear
 elsei exists("b:current_syntax")
@@ -69,7 +56,7 @@ syn match Bind /^\s*\(bindsym\|bindcode\)\s\+.*$/ contains=Variable,BindKeyword,
 syn keyword SizeSpecial x contained
 syn match NegativeSize /-/ contained
 syn match Size /-\?\d\+\s\?x\s\?-\?\d\+/ contained contains=SizeSpecial,Number,NegativeSize
-syn match Floating /^\s*floating_modifier\s\+\$\w\+\d\?/ contains=Variable
+syn match Floating /^\s*floating_modifier\s\+\$\w\+\d\?\s\(normal\|inverse\)/ contains=Variable
 syn match Floating /^\s*floating_\(maximum\|minimum\)_size\s\+-\?\d\+\s\?x\s\?-\?\d\+/ contains=Size
 
 " Orientation
