@@ -56,8 +56,12 @@ syn match Bind /^\s*\(bindsym\|bindcode\)\s\+.*$/ contains=Variable,BindKeyword,
 syn keyword SizeSpecial x contained
 syn match NegativeSize /-/ contained
 syn match Size /-\?\d\+\s\?x\s\?-\?\d\+/ contained contains=SizeSpecial,Number,NegativeSize
-syn match Floating /^\s*floating_modifier\s\+\$\w\+\d\?\s\(normal\|inverse\)/ contains=Variable
+syn match Floating /^\s*floating_modifier\s\+\$\w\+\d\?\s\(normal\|inverse\)/ contains=Variable,Constant
 syn match Floating /^\s*floating_\(maximum\|minimum\)_size\s\+-\?\d\+\s\?x\s\?-\?\d\+/ contains=Size
+
+" tiling_drag
+syn keyword TilingDragKeyword disable enable contained
+syn match TilingDrag /^\s*tiling_drag\s\+\(disable\|enable\)/ contains=TilingDragKeyword
 
 " Orientation
 syn keyword OrientationKeyword vertical horizontal auto contained
@@ -162,6 +166,10 @@ syn region Block start=+.*s\?{$+ end=+^}$+ contains=BlockKeyword,String,Bind,Com
 syn region LineCont start=/^.*\\$/ end=/^.*$/ contains=BlockKeyword,String,Bind,Comment,Font,FocusWrappingType,Color,Variable transparent keepend extend
 
 " Define the highlighting.
+hi! def link Include Identifier
+hi! def link TilingDrag Identifier
+hi! def link TilingDragKeyword Type
+
 hi! def link Error Error
 hi! def link Todo Todo
 hi! def link Comment Comment
