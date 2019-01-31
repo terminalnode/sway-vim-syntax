@@ -162,11 +162,17 @@ syn match DrawingMarks /^\s*show_marks\s\+\(yes\|no\)\s\?$/ contains=FocusWrappi
 syn keyword BlockKeyword mode bar colors i3bar_command status_command position exec mode hidden_state modifier id position output background statusline tray_output tray_padding separator separator_symbol workspace_buttons strip_workspace_numbers binding_mode_indicator focused_workspace active_workspace inactive_workspace urgent_workspace binding_mode contained
 syn region Block start=+.*s\?{$+ end=+^}$+ contains=BlockKeyword,String,Bind,Comment,Font,FocusWrappingType,Color,Variable transparent keepend extend
 
+" include statement
+syn match IncludedDir /[\~\/.][\~\/.a-zA-Z]\+/ contained
+syn match Include /^include\s\+[\~\/.a-zA-Z]\+/ contains=IncludedDir
+
 " Line continuation
 syn region LineCont start=/^.*\\$/ end=/^.*$/ contains=BlockKeyword,String,Bind,Comment,Font,FocusWrappingType,Color,Variable transparent keepend extend
 
+
 " Define the highlighting.
 hi! def link Include Identifier
+hi! def link IncludedDir Variable
 hi! def link TilingDrag Identifier
 hi! def link TilingDragKeyword Type
 
@@ -234,4 +240,4 @@ hi! def link BlockKeyword Identifier
 hi! def link Variable Statement
 hi! def link ArbitraryCommand Type
 
-let b:current_syntax = "i3config"
+let b:current_syntax = "swayconfig"
