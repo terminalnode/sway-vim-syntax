@@ -6,11 +6,11 @@ This repository only contains very minor changes from that of [mboughaba/i3confi
 
 The original i3config does what a syntax highlighting would do and additionally provides some sort of syntax checking. If you end up with *Bold Red* lines in your i3 config file this would mean that your syntax is wrong or there is an issue in the plugin.
 
-Issues or deficiencies in this with regards to sway will be patched as they come up.
+Issues or deficiencies in this with regards to sway will be patched as they come up. It should work fine with i3 as well seeing as it was originally written for it (though you'd have to edit ftdetect), but no effort will be spent on maintaining compatibility. 
 
 ### File type detection
 
-There is no specific extension for i3 config file.
+There is no specific extension for sway config file.
 For auto detection, the recommended method is to rename your file to something like:
 
 + .config/sway/*
