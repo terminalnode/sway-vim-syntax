@@ -1,6 +1,8 @@
 # sway-vim-syntax - syntax highlighting for sway config files
 
-This repository only contains very minor changes from that of [mboughaba/i3config.vim](https://github.com/mboughaba/i3config.vim/), mainly just adding file type detection for sway and possibly adding in keywords that don't exist in i3 syntax. Feel free to submit bug reports if anything is missing and I will try to fix it, or pull requests if you've already figured it out. My attitude towards the project is to fix things as I go along, not to provide a polished product.
+This repository only contains very minor changes from that of [mboughaba/i3config.vim](https://github.com/mboughaba/i3config.vim/), mainly just adding file type detection for sway, changing behaviour for keywords that are used differently in sway and adding keywords that don't exist in i3.
+
+Contrary to the original repo I do not aim to provide full coverage of all config syntax, but rather to fix issues as they pop up for me. Bug reports and pull requests are welcome however.
 
 ## Features
 
@@ -10,10 +12,7 @@ Issues or deficiencies in this with regards to sway will be patched as they come
 
 ### File type detection
 
-There is no specific extension for sway config file.
-For auto detection, the recommended method is to rename your file to something like:
-
-+ .config/sway/*
+There is no specific extension for sway config file. For auto detection, put the file in a folder structure ending in .config/sway (I suggest ~/.config/sway). Note that you can have multiple files in this folder if you wish to split your config into different files and use `include` to import them.
 
 ## Installation instructions
 
