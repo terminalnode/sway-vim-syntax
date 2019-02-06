@@ -112,11 +112,6 @@ syn match ClientColor /^\s*client.\w\+\s\+.*$/ contains=ClientColorKeyword,Color
 syn match InterprocessKeyword /ipc-socket/ contained
 syn match Interprocess /^\s*ipc-socket\s\+.*$/ contains=InterprocessKeyword
 
-" Mouse warping
-syn keyword MouseWarpingKeyword mouse_warping contained
-syn keyword MouseWarpingType output none contained
-syn match MouseWarping /^\s*mouse_warping\s\+\(output\|none\)\s\?$/ contains=MouseWarpingKeyword,MouseWarpingType
-
 " Focus follows mouse
 syn keyword FocusFollowsMouseKeyword focus_follows_mouse contained
 syn keyword FocusFollowsMouseType yes no contained
@@ -158,33 +153,34 @@ syn match DrawingMarks /^\s*show_marks\s\+\(yes\|no\)\s\?$/ contains=FocusWrappi
 syn keyword BlockKeyword mode bar colors i3bar_command status_command position exec mode hidden_state modifier id position output background statusline tray_output tray_padding separator separator_symbol workspace_buttons strip_workspace_numbers binding_mode_indicator focused_workspace active_workspace inactive_workspace urgent_workspace binding_mode contained
 syn region Block start=+.*s\?{$+ end=+^}$+ contains=BlockKeyword,String,Bind,Comment,Font,FocusWrappingType,Color,Variable transparent keepend extend
 
-" Include statement
-syn match IncludedDir /[\~\/.][\~\/.a-zA-Z]\+/  contained
-syn match Include /^include\s\+[\~\/.a-zA-Z]\+/ contains=IncludedDir
-
-
-" Enable/Disable statements
-syn keyword EnDisAble disable enable contained
-syn match TilingDrag /^\s*tiling_drag\s\+\(disable\|enable\)/ contains=EnDisAble
-syn match Xwayland /^\s*xwayland\s\+\(disable\|enable\)/      contains=EnDisAble
-
 " Line continuation
 syn region LineCont start=/^.*\\$/ end=/^.*$/ contains=BlockKeyword,String,Bind,Comment,Font,FocusWrappingType,Color,Variable transparent keepend extend
 
+" Include statement
+syn match IncludedDir /[\~\/.][\~\/.a-zA-Z]\+/  contained
+syn match IncludeKW /^include\s\+[\~\/.a-zA-Z]\+/ contains=IncludedDir
+hi! def link IncludeKW Identifier
+hi! def link IncludedDir Variable
+
+" TilingDrag
+syn keyword TilingDragArgs disable enable toggle contained
+syn match TilingDragKW /^\s*tiling_drag\s\+\(disable\|enable\|toggle\)/ contains=TilingDragArgs
+hi! def link TilingDragArgs Type
+hi! def link TilingDragKW Identifier
+
+" Enable/Disable statements
+syn keyword XwaylandArgs disable enable contained
+syn match XwaylandKW /^\s*xwayland\s\+\(disable\|enable\)/ contains=XwaylandArgs
+hi! def link XwaylandArgs Type
+hi! def link XwaylandKW Identifier
+
+" Mouse warping
+syn keyword MouseWarpingArgs output none container contained
+syn match MouseWarpingKW /^\s*mouse_warping\s\+\(output\|none\|container\)\s\?$/ contains=MouseWarpingKW,MouseWarpingArgs
+hi! def link MouseWarpingType Type
+hi! def link MouseWarpingKW Identifier
 
 " Define the highlighting.
-" Variables in the original file seem to just be arguments starting with $
-" Identiefers are all the keywords such as set, bindsym and tiling_drag
-" Types are no, none, disable, enable etc.
-hi! def link Include Identifier
-hi! def link TilingDrag Identifier
-hi! def link Xwayland Identifier
-
-" New Keywords
-hi! def link IncludedDir Variable
-hi! def link EnDisAble Type
-
-" Highlighting from original project.
 hi! def link Error Error
 hi! def link Todo Todo
 hi! def link Comment Comment
@@ -192,7 +188,6 @@ hi! def link FontContent Type
 hi! def link FocusOnActivationType Type
 hi! def link PopupOnFullscreenType Type
 hi! def link OrientationKeyword Type
-hi! def link MouseWarpingType Type
 hi! def link FocusFollowsMouseType Type
 hi! def link GapStyleKeyword Type
 hi! def link LayoutKeyword Type
@@ -236,7 +231,6 @@ hi! def link ExecKeyword Identifier
 hi! def link WorkspaceKeyword Identifier
 hi! def link ClientColorKeyword Identifier
 hi! def link InterprocessKeyword Identifier
-hi! def link MouseWarpingKeyword Identifier
 hi! def link FocusFollowsMouseKeyword Identifier
 hi! def link PopupOnFullscreenKeyword Identifier
 hi! def link FocusWrappingKeyword Identifier
