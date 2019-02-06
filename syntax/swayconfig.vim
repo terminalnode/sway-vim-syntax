@@ -183,7 +183,6 @@ hi! def link MouseWarpingKW Identifier
 " Seat configuration
 " To avoid an extremely long unreadable regex the different seat
 " configurations will get their own matchings
-" syn match Interprocess /^\s*ipc-socket\s\+.*$/ contains=InterprocessKeyword
 syn match SeatName /seat\d\+/ contained
 syn match AttachString /\(attach\)\@<=\s.*$/ contained
 syn keyword PointerConstraintArgs enable disable escape contained
