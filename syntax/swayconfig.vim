@@ -177,10 +177,43 @@ hi! def link XwaylandKW Identifier
 " Mouse warping
 syn keyword MouseWarpingArgs output none container contained
 syn match MouseWarpingKW /^\s*mouse_warping\s\+\(output\|none\|container\)\s\?$/ contains=MouseWarpingKW,MouseWarpingArgs
-hi! def link MouseWarpingType Type
+hi! def link MouseWarpingArgs Type
 hi! def link MouseWarpingKW Identifier
 
+" Seat configuration
+" To avoid an extremely long unreadable regex the different seat
+" configurations will get their own matchings
+" syn match Interprocess /^\s*ipc-socket\s\+.*$/ contains=InterprocessKeyword
+syn match SeatName /seat\d\+/ contained
+syn match AttachString /\(attach\)\@<=\s.*$/ contained
+syn keyword PointerConstraintArgs enable disable escape contained
+syn keyword Boolean true false contained
+syn match ButtonEvent /\(button[1-9]\|event\d\+\)/ contained
+syn match CurSetMove /\d\+\s\d\+/ contained
+syn match SeatHideCursor /^\s*seat\sseat\d\+\shide_cursor\s\d\+/ contains=SeatName,Number
+syn match SeatSetFallback /^\s*seat\sseat\d\+\sfallback\s\(true\|false\)/ contains=SeatName,Boolean
+syn match SeatPointerConstraint /^\s*seat\sseat\d\+\spointer_constraint\s\(enable\|disable\|escape\)/ contains=SeatName,PointerConstraintArgs
+syn match SeatAttach /^\s*seat\sseat\d\+\sattach\s.*$/ contains=SeatName,AttachString
+syn match SeatCursorSetMove /^\s*seat\sseat\d\+\scursor\s\(set\|move\)\s\d\+\s\d\+$/ contains=SeatName,CurSetMove
+syn match SeatCursorPressRelease /^\s*seat\sseat\d\+\scursor\s\(press\|release\)\s\(button[1-9]\|event\d\+\)$/ contains=SeatName,ButtonEvent
+syn match SeatClause /^\s*seat\sseat\d\+\s\({\)\@=/ contains=SeatName
+
+hi! def link SeatName Constant
+hi! def link AttachString Type
+hi! def link PointerConstraintArgs Type
+hi! def link Boolean Type
+hi! def link ButtonEvent Type
+hi! def link CurSetMove Variable
+hi! def link SeatHideCursor Identifier
+hi! def link SeatSetFallback Identifier
+hi! def link SeatPointerConstraint Identifier
+hi! def link SeatAttach Identifier
+hi! def link SeatCursorSetMove Identifier
+hi! def link SeatCursorPressRelease Identifier
+hi! def link SeatClause Identifier
+
 " Define the highlighting.
+" Grandfathered in from old repository
 hi! def link Error Error
 hi! def link Todo Todo
 hi! def link Comment Comment
