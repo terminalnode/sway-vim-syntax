@@ -157,7 +157,7 @@ syn region Block start=+.*s\?{$+ end=+^}$+ contains=BlockKeyword,String,Bind,Com
 syn region LineCont start=/^.*\\$/ end=/^.*$/ contains=BlockKeyword,String,Bind,Comment,Font,FocusWrappingType,Color,Variable transparent keepend extend
 
 " Include statement
-syn match IncludedDir /[\~\/.][\~\/.a-zA-Z]\+/  contained
+syn match IncludedDir /\s\+[\~\/.a-zA-Z]\+/  contained
 syn match IncludeKW /^include\s\+[\~\/.a-zA-Z]\+/ contains=IncludedDir
 hi! def link IncludeKW Identifier
 hi! def link IncludedDir Variable
