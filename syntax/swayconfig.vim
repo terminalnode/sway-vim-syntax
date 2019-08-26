@@ -6,6 +6,8 @@ en
 
 scriptencoding utf-8
 
+syn spell notoplevel
+
 " Error
 syn match Error /.*/
 
@@ -14,7 +16,7 @@ syn keyword Todo TODO FIXME XXX contained
 
 " Comment
 " Comments are started with a # and can only be used at the beginning of a line
-syn match Comment /^\s*#.*$/ contains=Todo
+syn match Comment /^\s*#.*$/ contains=Todo,@Spell
 
 " Font
 " A FreeType font description is composed by:
@@ -52,11 +54,14 @@ syn keyword BindKeyword bindsym bindcode exec gaps contained
 syn match BindArgument /--\w\+\(\(-\w\+\)\+\)\?\s/ contained
 syn match Bind /^\s*\(bindsym\|bindcode\)\s\+.*$/ contains=Variable,BindKeyword,VariableAndModifier,BindArgument,Number,Modifier,Action,String,GapStyleKeyword
 
+" Floating Modifier
+syn keyword FloatingModifierKeyword floating_modifier contained
+syn match FloatingModifier /^\s*floating_modifier\s\+.*$/ contains=FloatingModifierKeyword,Variable,Constant
+
 " Floating
 syn keyword SizeSpecial x contained
 syn match NegativeSize /-/ contained
 syn match Size /-\?\d\+\s\?x\s\?-\?\d\+/ contained contains=SizeSpecial,Number,NegativeSize
-syn match Floating /^\s*floating_modifier\s\+\$\w\+\d\?\s\(normal\|inverse\)/ contains=Variable,Constant
 syn match Floating /^\s*floating_\(maximum\|minimum\)_size\s\+-\?\d\+\s\?x\s\?-\?\d\+/ contains=Size
 
 " Orientation
@@ -253,6 +258,7 @@ hi! def link GapStyle Identifier
 hi! def link Layout Identifier
 hi! def link BorderStyle Identifier
 hi! def link Edge Identifier
+hi! def link FloatingModifierKeyword Identifier
 hi! def link Floating Identifier
 hi! def link CommandKeyword Identifier
 hi! def link NoFocusKeyword Identifier
