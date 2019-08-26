@@ -6,6 +6,8 @@ en
 
 scriptencoding utf-8
 
+syn spell notoplevel
+
 " Error
 syn match Error /.*/
 
@@ -14,7 +16,7 @@ syn keyword Todo TODO FIXME XXX contained
 
 " Comment
 " Comments are started with a # and can only be used at the beginning of a line
-syn match Comment /^\s*#.*$/ contains=Todo
+syn match Comment /^\s*#.*$/ contains=Todo,@Spell
 
 " Font
 " A FreeType font description is composed by:
