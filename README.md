@@ -29,6 +29,16 @@ to .vimrc and run `:PluginInstall`.
 > I use Vundle myself, the two steps below may not be fully correct,
 you need to change them to fit your needs.
 
+### Vim-Plug
+
+Install using [vim-plug](https://github.com/junegunn/vim-plug) by adding
+
+```vim
+Plug 'terminalnode/sway-vim-syntax'
+```
+
+to .vimrc or neovim init.vim and running `PlugInstall`
+
 ### Git submodule + Pathogen
 
 If you have [pathogen](https://github.com/tpope/vim-pathogen) installed,
