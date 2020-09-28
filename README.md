@@ -37,7 +37,7 @@ Install using [vim-plug](https://github.com/junegunn/vim-plug) by adding
 Plug 'terminalnode/sway-vim-syntax'
 ```
 
-to .vimrc or neovim init.vim and running `PlugInstall`
+to .vimrc or neovim init.vim and running `:PlugInstall`
 
 ### Git submodule + Pathogen
 
