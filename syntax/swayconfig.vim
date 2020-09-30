@@ -43,6 +43,11 @@ syn match Initialize /^\s*set\s\+.*$/ contains=Variable,InitializeKeyword,Color,
 
 " Gaps
 syn keyword GapStyleKeyword inner outer current all set plus minus contained
+"syn keyword SmartGapsCmd smart_gaps nextgroup=SmartGapsKeyword skipwhite
+syn keyword SmartGapsKeyword on no_gaps off
+syn match SmartGapsCmd /^s*smart_gaps\s\+\(on\|no_gaps\|off\)/ contains=SmartGapsKeyword
+syn keyword SmartBordersKeyword on off
+syn match SmartBordersCmd /^s*smart_borders\s\+\(on\|off\)/ contains=SmartBordersKeyword
 syn match GapStyle /^\s*\(gaps\)\s\+\(inner\|outer\)\(\s\+\(current\|all\)\)\?\(\s\+\(set\|plus\|minus\)\)\?\(\s\+\d\+\)$/ contains=GapStyleKeyword,number
 
 " Keyboard bindings
@@ -227,6 +232,8 @@ hi! def link PopupOnFullscreenType Type
 hi! def link OrientationKeyword Type
 hi! def link FocusFollowsMouseType Type
 hi! def link GapStyleKeyword Type
+hi! def link SmartGapsKeyword Type
+hi! def link SmartBordersKeyword Type
 hi! def link LayoutKeyword Type
 hi! def link BorderStyleKeyword Type
 hi! def link EdgeKeyword Type
@@ -255,6 +262,8 @@ hi! def link FontKeyword Identifier
 hi! def link BindKeyword Identifier
 hi! def link Orientation Identifier
 hi! def link GapStyle Identifier
+hi! def link SmartGapsCmd Identifier
+hi! def link SmartBordersCmd Identifier
 hi! def link Layout Identifier
 hi! def link BorderStyle Identifier
 hi! def link Edge Identifier
